@@ -19,7 +19,8 @@ def = 1
 move_speed = 40.0
 attack_range = 35.0
 attack_cooldown = 1.5
-
+gold_reward = 10
+exp_reward = 5
 [node name="Body" type="ColorRect" parent="."]
 offset_left = -15.0
 offset_top = -36.0

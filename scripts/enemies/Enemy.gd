@@ -13,8 +13,12 @@ class_name EnemyCharacter
 @export var enemy_id: String = ""
 
 ## Gold and EXP given to the player when this enemy is defeated.
-var gold_reward: int = 0
-var exp_reward: int = 0
+## Must be @export so that scene files (e.g. Boss.tscn) can set these values.
+@export var gold_reward: int = 0
+@export var exp_reward: int = 0
+
+## Overridden by BossCharacter
+var is_boss: bool = false
 
 
 # ---------------------------------------------------------------------------
@@ -78,7 +82,7 @@ func die() -> void:
 	])
 
 	# Notify other systems (gold, EXP, wave tracker, etc.).
-	GameEvents.enemy_defeated.emit(enemy_id, gold_reward, exp_reward)
+	GameEvents.enemy_defeated.emit(enemy_id, gold_reward, exp_reward, is_boss, global_position)
 
 	# Let CharacterBase handle is_dead = true, velocity reset, queue_free().
 	super()

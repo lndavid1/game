@@ -22,6 +22,8 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 GameEvents="*res://scripts/autoload/GameEvents.gd"
 DataManager="*res://scripts/autoload/DataManager.gd"
+GameManager="*res://scripts/core/GameManager.gd"
+RewardManager="*res://scripts/core/RewardManager.gd"
 
 [display]
 

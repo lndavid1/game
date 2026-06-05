@@ -1,0 +1,49 @@
+; Godot 4 scene file.
+; Boss enemy scene using BossCharacter (scripts/enemies/Boss.gd).
+; Stats are set as Inspector exports — no enemy_id needed for the base boss.
+; Boss is visually larger and darker than a normal enemy.
+
+[gd_scene load_steps=3 format=3 uid="uid://boss_character_test"]
+
+[ext_resource type="Script" path="res://scripts/enemies/Boss.gd" id="1_boss_script"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_boss"]
+size = Vector2(48, 60)
+
+[node name="Boss" type="CharacterBody2D"]
+script = ExtResource("1_boss_script")
+display_name = "Boss"
+max_hp = 400
+atk = 25
+def = 8
+move_speed = 25.0
+attack_range = 45.0
+attack_cooldown = 1.8
+boss_gold_reward = 50
+boss_exp_reward = 30
+
+[node name="Body" type="ColorRect" parent="."]
+offset_left = -24.0
+offset_top = -60.0
+offset_right = 24.0
+offset_bottom = 0.0
+color = Color(0.45, 0.05, 0.55, 1)
+
+[node name="InnerGlow" type="ColorRect" parent="."]
+offset_left = -20.0
+offset_top = -56.0
+offset_right = 20.0
+offset_bottom = -4.0
+color = Color(0.65, 0.1, 0.75, 0.5)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -32.0
+offset_top = -82.0
+offset_right = 32.0
+offset_bottom = -64.0
+text = "★ BOSS ★"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_boss")

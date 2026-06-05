@@ -1,10 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://main_scene_starter"]
+[gd_scene format=3 uid="uid://biocgwgr4r55g"]
 
 [ext_resource type="PackedScene" path="res://scenes/main/GameWorld.tscn" id="1_game_world"]
 [ext_resource type="PackedScene" path="res://scenes/ui/MainHUD.tscn" id="2_main_hud"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" unique_id=2023854187]
 
-[node name="GameWorld" parent="." instance=ExtResource("1_game_world")]
+[node name="GameWorld" parent="." unique_id=1547387686 instance=ExtResource("1_game_world")]
+position = Vector2(0, -1)
 
-[node name="MainHUD" parent="." instance=ExtResource("2_main_hud")]
+[node name="MainHUD" parent="." unique_id=1934933257 instance=ExtResource("2_main_hud")]

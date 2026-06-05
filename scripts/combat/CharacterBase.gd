@@ -6,6 +6,16 @@ class_name CharacterBase
 ## Hero AI and Enemy AI are NOT implemented here — those go in subclasses.
 
 # ---------------------------------------------------------------------------
+# Signals
+# ---------------------------------------------------------------------------
+
+## Emitted when this character dies, before queue_free() is called.
+## is_dead is already true when this fires, so alive-checks will skip it.
+## WaveManager connects to this per-enemy to track wave progress without
+## scanning the scene tree on every frame.
+signal died(character: CharacterBase)
+
+# ---------------------------------------------------------------------------
 # Exported stats — can be set in the Godot Inspector or via setup_from_data().
 # ---------------------------------------------------------------------------
 
@@ -122,6 +132,13 @@ func die() -> void:
 	velocity = Vector2.ZERO
 
 	print("[%s] has died." % display_name)
+
+	# Emit per-instance died signal BEFORE queue_free().
+	# is_dead is already true above, so any alive-check that runs inside
+	# a died handler will correctly see this character as dead.
+	# Listeners (e.g. WaveManager) can safely call check_wave_cleared()
+	# directly — no call_deferred hack needed.
+	died.emit(self)
 
 	# queue_free() safely removes the node at the end of the current frame.
 	queue_free()

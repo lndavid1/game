@@ -1,17 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://game_world_starter"]
+[gd_scene load_steps=9 format=3 uid="uid://game_world_starter"]
 
-[ext_resource type="Script" path="res://scripts/core/GameWorld.gd" id="1_game_world_script"]
-[ext_resource type="Script" path="res://scripts/characters/Hero.gd" id="2_hero_script"]
-[ext_resource type="Script" path="res://scripts/enemies/Enemy.gd" id="3_enemy_script"]
+[ext_resource type="Script"      path="res://scripts/core/GameWorld.gd"   id="1_game_world_script"]
+[ext_resource type="Script"      path="res://scripts/characters/Hero.gd"  id="2_hero_script"]
+[ext_resource type="Script"      path="res://scripts/core/WaveManager.gd" id="3_wave_manager_script"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy.tscn"   id="4_enemy_scene"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Boss.tscn"    id="5_boss_scene"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hero"]
 size = Vector2(34, 46)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_enemy"]
-size = Vector2(34, 38)
+; ─────────────────────────────────────────────────────────────────────────────
+; Scene tree
+; ─────────────────────────────────────────────────────────────────────────────
 
 [node name="GameWorld" type="Node2D"]
 script = ExtResource("1_game_world_script")
+
+; ── Background visuals ────────────────────────────────────────────────────────
 
 [node name="Battlefield" type="Node2D" parent="."]
 
@@ -27,13 +32,27 @@ offset_right = 1280.0
 offset_bottom = 720.0
 color = Color(0.29, 0.43, 0.22, 1)
 
+; ── Spawn reference points ────────────────────────────────────────────────────
+; HeroSpawn   — used by GameWorld or a future HeroManager.
+; EnemySpawn1/2/3 — passed to WaveManager.spawn_points so enemies spread out.
+
 [node name="SpawnPoints" type="Node2D" parent="."]
 
 [node name="HeroSpawn" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(200, 500)
 
-[node name="EnemySpawn" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(1000, 500)
+[node name="EnemySpawn1" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(900, 470)
+
+[node name="EnemySpawn2" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(980, 500)
+
+[node name="EnemySpawn3" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1060, 470)
+
+; ── Heroes container ─────────────────────────────────────────────────────────
+; PrototypeHero is a permanent scene-placed hero.
+; When a HeroManager is added it will spawn heroes dynamically instead.
 
 [node name="Heroes" type="Node2D" parent="."]
 
@@ -67,36 +86,22 @@ theme_override_font_sizes/font_size = 9
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Heroes/PrototypeHero"]
 shape = SubResource("RectangleShape2D_hero")
 
+; ── Enemies container ─────────────────────────────────────────────────────────
+; Starts empty. WaveManager adds enemy nodes here at runtime.
+
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="PrototypeEnemy" type="CharacterBody2D" parent="Enemies"]
-position = Vector2(1000, 500)
-script = ExtResource("3_enemy_script")
-display_name = "Slime"
-max_hp = 55
-atk = 5
-def = 1
-move_speed = 40.0
-attack_range = 32.0
-attack_cooldown = 1.5
+; ── WaveManager ───────────────────────────────────────────────────────────────
+; Replaces WaveManagerPlaceholder.
+; GameWorld.gd calls start_wave() after connecting signals in _ready().
 
-[node name="Body" type="ColorRect" parent="Enemies/PrototypeEnemy"]
-offset_left = -17.0
-offset_top = -38.0
-offset_right = 17.0
-offset_bottom = 0.0
-color = Color(0.85, 0.25, 0.22, 1)
-
-[node name="Label" type="Label" parent="Enemies/PrototypeEnemy"]
-offset_left = -28.0
-offset_top = -58.0
-offset_right = 28.0
-offset_bottom = -40.0
-text = "ENEMY"
-horizontal_alignment = 1
-theme_override_font_sizes/font_size = 9
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/PrototypeEnemy"]
-shape = SubResource("RectangleShape2D_enemy")
-
-[node name="WaveManagerPlaceholder" type="Node" parent="."]
+[node name="WaveManager" type="Node" parent="."]
+script = ExtResource("3_wave_manager_script")
+enemy_scene = ExtResource("4_enemy_scene")
+boss_scene = ExtResource("5_boss_scene")
+enemies_root = NodePath("../Enemies")
+enemies_per_wave = 5
+boss_wave_interval = 10
+next_wave_delay = 2.0
+max_waves = 50
+spawn_points = [NodePath("../SpawnPoints/EnemySpawn1"), NodePath("../SpawnPoints/EnemySpawn2"), NodePath("../SpawnPoints/EnemySpawn3")]

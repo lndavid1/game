@@ -10,22 +10,30 @@ class_name HUDController
 @onready var stage_label: Label = $Root/TopBar/StageLabel
 
 
+func _ready() -> void:
+	# Connect global signals to local UI update functions
+	GameEvents.gold_changed.connect(update_gold)
+	GameEvents.exp_changed.connect(update_exp)
+	GameEvents.wave_started.connect(update_wave)
+	
+	# Initialize HUD with starting values from GameManager
+	update_gold(GameManager.gold)
+	update_exp(GameManager.exp)
+	update_wave(GameManager.current_wave)
+	update_stage(GameManager.current_stage)
+
+
 func update_gold(value: int) -> void:
-	# Later: call this from a gold_changed signal.
 	gold_label.text = "Gold: %d" % value
 
 
 func update_exp(value: int) -> void:
-	# Later: call this from an exp_changed signal.
 	exp_label.text = "EXP: %d" % value
 
 
 func update_wave(value: int) -> void:
-	# Later: call this when the active wave changes.
 	wave_label.text = "Wave: %d" % value
 
 
 func update_stage(value: String) -> void:
-	# Later: call this when the active stage changes.
 	stage_label.text = "Stage: %s" % value
-

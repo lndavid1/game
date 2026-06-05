@@ -1,5 +1,4 @@
 extends Node
-class_name GameManager
 
 ## Coordinates high-level game flow.
 ## Detailed gameplay logic should stay in focused systems such as wave, combat, save, and UI scripts.
@@ -21,11 +20,14 @@ func pause_game() -> void:
 
 
 func add_gold(amount: int) -> void:
-	# Later: update gold and notify UI through signals.
-	pass
+	if amount <= 0:
+		return
+	gold += amount
+	GameEvents.gold_changed.emit(gold)
 
 
 func add_exp(amount: int) -> void:
-	# Later: update EXP and notify UI through signals.
-	pass
-
+	if amount <= 0:
+		return
+	exp += amount
+	GameEvents.exp_changed.emit(exp)
