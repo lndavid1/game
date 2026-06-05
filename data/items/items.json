@@ -1,0 +1,35 @@
+[
+  {
+    "id": "rusty_sword",
+    "name": "Rusty Sword",
+    "type": "weapon",
+    "rarity": "common",
+    "stat_bonus": {
+      "base_atk": 3
+    },
+    "sell_value": 5
+  },
+  {
+    "id": "leather_armor",
+    "name": "Leather Armor",
+    "type": "armor",
+    "rarity": "common",
+    "stat_bonus": {
+      "base_hp": 20,
+      "base_def": 2
+    },
+    "sell_value": 6
+  },
+  {
+    "id": "wooden_ring",
+    "name": "Wooden Ring",
+    "type": "accessory",
+    "rarity": "common",
+    "stat_bonus": {
+      "base_atk": 1,
+      "base_hp": 10
+    },
+    "sell_value": 4
+  }
+]
+

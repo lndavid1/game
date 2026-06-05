@@ -1,0 +1,28 @@
+; Engine configuration file.
+; This file is read by Godot 4.
+
+config_version=5
+
+[application]
+
+config/name="Idle RPG Auto Battle"
+run/main_scene="res://scenes/main/Main.tscn"
+config/features=PackedStringArray("4.2", "Forward Plus")
+
+[autoload]
+
+GameEvents="*res://scripts/autoload/GameEvents.gd"
+DataManager="*res://scripts/autoload/DataManager.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+

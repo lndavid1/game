@@ -1,0 +1,18 @@
+[
+  {
+    "id": "wave_001",
+    "display_name": "Forest Edge",
+    "enemies": [
+      { "enemy_id": "enemy_slime", "count": 3 }
+    ]
+  },
+  {
+    "id": "wave_002",
+    "display_name": "Broken Trail",
+    "enemies": [
+      { "enemy_id": "enemy_slime", "count": 2 },
+      { "enemy_id": "enemy_goblin", "count": 1 }
+    ]
+  }
+]
+

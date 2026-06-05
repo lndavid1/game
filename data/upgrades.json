@@ -1,0 +1,19 @@
+[
+  {
+    "id": "upgrade_knight_attack_01",
+    "target_id": "hero_knight",
+    "display_name": "Knight Training I",
+    "stat": "attack",
+    "add_value": 2,
+    "gold_cost": 25
+  },
+  {
+    "id": "upgrade_archer_hp_01",
+    "target_id": "hero_archer",
+    "display_name": "Archer Conditioning I",
+    "stat": "max_hp",
+    "add_value": 10,
+    "gold_cost": 20
+  }
+]
+

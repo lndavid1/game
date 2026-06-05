@@ -1,0 +1,25 @@
+[
+  {
+    "id": "enemy_slime",
+    "display_name": "Slime",
+    "max_hp": 35,
+    "attack": 5,
+    "attack_range": 32,
+    "attack_cooldown": 1.5,
+    "move_speed": 45,
+    "gold_reward": 4,
+    "exp_reward": 2
+  },
+  {
+    "id": "enemy_goblin",
+    "display_name": "Goblin",
+    "max_hp": 55,
+    "attack": 8,
+    "attack_range": 36,
+    "attack_cooldown": 1.3,
+    "move_speed": 60,
+    "gold_reward": 7,
+    "exp_reward": 4
+  }
+]
+

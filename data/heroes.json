@@ -1,0 +1,21 @@
+[
+  {
+    "id": "hero_knight",
+    "display_name": "Knight",
+    "max_hp": 120,
+    "attack": 14,
+    "attack_range": 42,
+    "attack_cooldown": 1.2,
+    "move_speed": 70
+  },
+  {
+    "id": "hero_archer",
+    "display_name": "Archer",
+    "max_hp": 80,
+    "attack": 10,
+    "attack_range": 140,
+    "attack_cooldown": 1.0,
+    "move_speed": 85
+  }
+]
+

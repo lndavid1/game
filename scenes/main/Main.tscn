@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://main_scene_starter"]
+
+[ext_resource type="PackedScene" path="res://scenes/main/GameWorld.tscn" id="1_game_world"]
+[ext_resource type="PackedScene" path="res://scenes/ui/MainHUD.tscn" id="2_main_hud"]
+
+[node name="Main" type="Node"]
+
+[node name="GameWorld" parent="." instance=ExtResource("1_game_world")]
+
+[node name="MainHUD" parent="." instance=ExtResource("2_main_hud")]

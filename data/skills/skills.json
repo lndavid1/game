@@ -1,0 +1,32 @@
+[
+  {
+    "id": "slash",
+    "name": "Slash",
+    "type": "damage",
+    "target": "single_enemy",
+    "power": 1.5,
+    "cooldown": 5.0,
+    "range": 48
+  },
+  {
+    "id": "fireball",
+    "name": "Fireball",
+    "type": "area_damage",
+    "target": "enemy_group",
+    "power": 1.8,
+    "cooldown": 7.0,
+    "range": 170,
+    "radius": 64
+  },
+  {
+    "id": "triple_shot",
+    "name": "Triple Shot",
+    "type": "multi_hit",
+    "target": "up_to_three_enemies",
+    "power": 0.8,
+    "hit_count": 3,
+    "cooldown": 6.0,
+    "range": 150
+  }
+]
+

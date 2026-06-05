@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://main_hud_starter"]
+
+[ext_resource type="Script" path="res://scripts/ui/HUDController.gd" id="1_hud_controller"]
+[ext_resource type="PackedScene" path="res://scenes/ui/UpgradePanel.tscn" id="2_upgrade_panel"]
+[ext_resource type="PackedScene" path="res://scenes/ui/OfflineRewardPopup.tscn" id="3_offline_reward_popup"]
+
+[node name="MainHUD" type="CanvasLayer"]
+script = ExtResource("1_hud_controller")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopBar" type="HBoxContainer" parent="Root"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_override_constants/separation = 24
+
+[node name="GoldLabel" type="Label" parent="Root/TopBar"]
+layout_mode = 2
+text = "Gold: 0"
+
+[node name="ExpLabel" type="Label" parent="Root/TopBar"]
+layout_mode = 2
+text = "EXP: 0"
+
+[node name="StageLabel" type="Label" parent="Root/TopBar"]
+layout_mode = 2
+text = "Stage: Forest 1"
+
+[node name="WaveLabel" type="Label" parent="Root/TopBar"]
+layout_mode = 2
+text = "Wave: 1"
+
+[node name="BottomNavigation" type="HBoxContainer" parent="Root"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -72.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="HeroesButton" type="Button" parent="Root/BottomNavigation"]
+layout_mode = 2
+text = "Heroes"
+
+[node name="InventoryButton" type="Button" parent="Root/BottomNavigation"]
+layout_mode = 2
+text = "Inventory"
+
+[node name="StagesButton" type="Button" parent="Root/BottomNavigation"]
+layout_mode = 2
+text = "Stages"
+
+[node name="SettingsButton" type="Button" parent="Root/BottomNavigation"]
+layout_mode = 2
+text = "Settings"
+
+[node name="UpgradePanel" parent="." instance=ExtResource("2_upgrade_panel")]
+
+[node name="OfflineRewardPopup" parent="." instance=ExtResource("3_offline_reward_popup")]

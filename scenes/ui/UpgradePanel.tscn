@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://upgrade_panel_starter"]
+
+[ext_resource type="Script" path="res://scripts/ui/UpgradePanel.gd" id="1_upgrade_panel_script"]
+
+[node name="UpgradePanel" type="Panel"]
+visible = false
+offset_left = 360.0
+offset_top = 150.0
+offset_right = 920.0
+offset_bottom = 520.0
+script = ExtResource("1_upgrade_panel_script")
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="Content"]
+layout_mode = 2
+text = "Hero Upgrade"
+
+[node name="HeroNameLabel" type="Label" parent="Content"]
+layout_mode = 2
+text = "Hero: -"
+
+[node name="UpgradeCostLabel" type="Label" parent="Content"]
+layout_mode = 2
+text = "Cost: -"
+
+[node name="UpgradeButton" type="Button" parent="Content"]
+layout_mode = 2
+text = "Upgrade"
+

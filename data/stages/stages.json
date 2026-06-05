@@ -1,0 +1,51 @@
+[
+  {
+    "id": "forest_stage_01",
+    "name": "Forest Stage 01",
+    "map_id": "forest",
+    "total_waves": 50,
+    "boss_every_waves": 10,
+    "base_gold_reward": 5,
+    "base_exp_reward": 3,
+    "enemy_pool": [
+      "slime",
+      "goblin",
+      "wolf",
+      "skeleton",
+      "mushroom_monster"
+    ],
+    "early_waves": [
+      {
+        "wave": 1,
+        "enemies": [
+          { "enemy_id": "slime", "count": 3 }
+        ]
+      },
+      {
+        "wave": 2,
+        "enemies": [
+          { "enemy_id": "slime", "count": 2 },
+          { "enemy_id": "goblin", "count": 1 }
+        ]
+      },
+      {
+        "wave": 3,
+        "enemies": [
+          { "enemy_id": "goblin", "count": 2 },
+          { "enemy_id": "wolf", "count": 1 }
+        ]
+      }
+    ],
+    "boss_waves": [
+      {
+        "wave": 10,
+        "enemy_id": "mushroom_monster",
+        "hp_multiplier": 2.5,
+        "atk_multiplier": 1.5,
+        "gold_multiplier": 4.0,
+        "exp_multiplier": 4.0
+      }
+    ]
+  }
+]
+

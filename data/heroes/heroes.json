@@ -1,0 +1,42 @@
+[
+  {
+    "id": "warrior",
+    "name": "Warrior",
+    "role": "frontline",
+    "rarity": "common",
+    "base_hp": 150,
+    "base_atk": 14,
+    "base_def": 8,
+    "move_speed": 70,
+    "attack_range": 42,
+    "attack_cooldown": 1.2,
+    "skill_id": "slash"
+  },
+  {
+    "id": "mage",
+    "name": "Mage",
+    "role": "ranged_damage",
+    "rarity": "common",
+    "base_hp": 85,
+    "base_atk": 20,
+    "base_def": 3,
+    "move_speed": 62,
+    "attack_range": 150,
+    "attack_cooldown": 1.6,
+    "skill_id": "fireball"
+  },
+  {
+    "id": "archer",
+    "name": "Archer",
+    "role": "ranged_damage",
+    "rarity": "common",
+    "base_hp": 105,
+    "base_atk": 12,
+    "base_def": 4,
+    "move_speed": 85,
+    "attack_range": 135,
+    "attack_cooldown": 0.95,
+    "skill_id": "triple_shot"
+  }
+]
+

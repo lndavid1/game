@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3 uid="uid://game_world_starter"]
+
+[ext_resource type="Script" path="res://scripts/characters/Hero.gd" id="1_hero_script"]
+[ext_resource type="Script" path="res://scripts/enemies/Enemy.gd" id="2_enemy_script"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hero"]
+size = Vector2(34, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enemy"]
+size = Vector2(34, 38)
+
+[node name="GameWorld" type="Node2D"]
+
+[node name="Battlefield" type="Node2D" parent="."]
+
+[node name="Background" type="ColorRect" parent="Battlefield"]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.18, 0.3, 0.2, 1)
+
+[node name="Ground" type="ColorRect" parent="Battlefield"]
+offset_left = 0.0
+offset_top = 500.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.29, 0.43, 0.22, 1)
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="HeroSpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(260, 500)
+
+[node name="EnemySpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(900, 500)
+
+[node name="Heroes" type="Node2D" parent="."]
+
+[node name="PrototypeHero" type="CharacterBody2D" parent="Heroes" groups=["heroes"]]
+position = Vector2(260, 500)
+script = ExtResource("1_hero_script")
+character_id = "warrior"
+display_name = "Warrior"
+max_hp = 120
+atk = 18
+def = 4
+move_speed = 95.0
+attack_range = 48.0
+attack_cooldown = 0.8
+
+[node name="Body" type="ColorRect" parent="Heroes/PrototypeHero"]
+offset_left = -17.0
+offset_top = -46.0
+offset_right = 17.0
+offset_bottom = 0.0
+color = Color(0.2, 0.55, 0.95, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Heroes/PrototypeHero"]
+shape = SubResource("RectangleShape2D_hero")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="PrototypeEnemy" type="CharacterBody2D" parent="Enemies" groups=["enemies"]]
+position = Vector2(900, 500)
+script = ExtResource("2_enemy_script")
+character_id = "slime"
+display_name = "Slime"
+max_hp = 55
+atk = 5
+def = 1
+move_speed = 40.0
+attack_range = 32.0
+attack_cooldown = 1.5
+
+[node name="Body" type="ColorRect" parent="Enemies/PrototypeEnemy"]
+offset_left = -17.0
+offset_top = -38.0
+offset_right = 17.0
+offset_bottom = 0.0
+color = Color(0.85, 0.25, 0.22, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/PrototypeEnemy"]
+shape = SubResource("RectangleShape2D_enemy")
+
+[node name="WaveManagerPlaceholder" type="Node" parent="."]
